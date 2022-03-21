@@ -1,26 +1,89 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
+   -->
+  <div id="app">
+    <main>
+      <div class="search-box">
+        <input type="text" class="search-bar" placeholder="Search..."/>
+      </div>
+
+      <div class="weather-wrap">
+        <div class="location-box">
+          <div class="location">Toulouse, FR</div>
+          <div class="date">Lundi 23 mars 2022</div>
+        </div>
+      </div>
+
+      <div class="weather-box">
+        <div class="temp">14°C</div>
+        <div class="weather">Vent</div>
+      </div>
+
+    </main>
+
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      api_key: 'd5737c808c637593c163876dbe73aac1'
+    }
+  },
   components: {
-    HelloWorld
+    // HelloWorld
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'montserrat', sans-serif;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-image:url('./assets/cold-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s;
+}
+main{
+  min-height: 100vh;
+  padding: 25px;
+
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75))
+}
+
+.search-box {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.search-box .search-bar {
+  display:block;
+  width: 100%;
+  padding: 15px;
+  color: #313131;
+  font-size: 20px;
+  appearance: none;
+  border: none;
+  outline:none;
+  background: none;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 0px 16px 0px 16px;
+  transition: 0.4s;
+}
+.search-box .search-bar:focus {
+  box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+  background-color: rgba(255,255, 255, 0.75);
+  border-radius: 16px 0px 16px 0px;
 }
 </style>
