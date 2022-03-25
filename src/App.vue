@@ -22,6 +22,7 @@
           <div class="weather">{{ weather.weather[0].main }}</div>
         </div>
       </div>
+      <p> {{ displayWeatherMap() }} </p>
     </main>
   </div>
 </template>
@@ -35,7 +36,8 @@ export default {
       api_key: 'd5737c808c637593c163876dbe73aac1',
       url_base: "https://api.openweathermap.org/data/2.5/",
       query: '',
-      weather: {}
+      weather: {},
+      mapWeather: {}
     }
   },
   methods: {
@@ -48,8 +50,18 @@ export default {
         .then(this.setResults);
       }
     },
+    displayWeatherMap(){
+      fetch(`${this.url_base}weather/1h/TA2/4/1/6?appid={API key}${this.api_key}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(this.setTest);
+    },
     setResults (results) {
       this.weather = results;
+    },
+    setTest (test) {
+      this.mapWeather = test;
     },
     dateBuilder (){
       let d = new Date();
